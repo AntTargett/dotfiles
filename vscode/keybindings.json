@@ -1,0 +1,26 @@
+// Place your key bindings in this file to override the defaults
+[ 
+    // vim navigation across tabs
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusPreviousGroup",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusNextGroup",
+        "when": "editorTextFocus"
+    },
+     // create vertical split
+     {
+        "key": "ctrl+v",
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus"
+    },
+    // Create horizontal split
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "editorFocus"
+    }
+]

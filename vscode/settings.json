@@ -1,0 +1,35 @@
+{
+    "files.autoSave": "on",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vim.easymotion": true,
+    "vim.normalModeKeyBindingsNonRecursive":[
+        {
+            "before": [" "],
+            "after": ["leader", "leader", "leader", "b", "d", "w"]
+        },
+         // scroll the viewport faster
+         {
+            "before": ["<C-e>"],
+            "after": ["3", "<C-e>"]
+        },
+        {
+            "before": ["<C-y>"],
+            "after": ["3", "<C-y>"]
+        },
+        // fix j and k to work with line wraps
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+    ],
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    // Uses OS clipboard instead of unamed register
+    "vim.useSystemClipboard": true,
+}
