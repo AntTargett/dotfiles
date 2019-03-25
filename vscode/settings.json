@@ -3,6 +3,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "code-runner.runInTerminal": true,
     "vim.easymotion": true,
     "vim.normalModeKeyBindingsNonRecursive":[
         {
@@ -32,4 +33,10 @@
     "editor.cursorBlinking": "solid",
     // Uses OS clipboard instead of unamed register
     "vim.useSystemClipboard": true,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "prettier.eslintIntegration": true,
+    "prettier.tabWidth": 4,
+    "prettier.tslintIntegration": true,
+    "prettier.useTabs": true,
 }
