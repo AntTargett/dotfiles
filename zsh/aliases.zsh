@@ -1,7 +1,8 @@
 alias hs='history | grep'
 alias myip="curl http://ipecho.net/plain; echo"
 
-
+#To use neovim
+alias vim='nvim'
 
 #Docker
 alias dc='docker-compose'    # invoke docker-compose, which takes too long to type.

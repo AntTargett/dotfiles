@@ -1,0 +1,40 @@
+
+export DOTFILES=$HOME/.dotfiles
+export ZSH=$DOTFILES/zsh
+
+# source all .zsh files inside of the zsh/ directory
+source "$ZSH/functions.zsh"
+source "$ZSH/aliases.zsh"
+
+
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(git vi-mode history-substring-search)
+
+source $ZSH/oh-my-zsh.sh
+# map jk to enter normal mode in zsh
+# https://dougblack.io/words/zsh-vi-mode.html
+bindkey -M viins 'jk' vi-cmd-mode
+
+
+# User configuration
+export DOTFILES=$HOME/.dotfiles
+
+# editor
+export EDITOR='nvim'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/bin:$PATH"
+
+# Go
+
+export GOPATH=/Users/atargett/go
+export PATH=$PATH:$GOPATH/bin
+
+

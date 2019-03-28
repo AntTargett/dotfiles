@@ -1,4 +1,19 @@
 
+# Make directory and then cd into directory 
+function md() {
+    mkdir -p $1
+    cd $1
+}
+
+# get gzipped size
+function gz() {
+    echo "orig size    (bytes): "
+    cat "$1" | wc -c
+    echo "gzipped size (bytes): "
+    gzip -c "$1" | wc -c
+}
+
+
 # fd - cd to selected directory
 fd() {
   local dir
