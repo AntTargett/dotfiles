@@ -3,6 +3,10 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "One Dark Pro Vivid",
+    "editor.wordWrap": "on",
+    "flow.useNPMPackagedFlow": true,
+    "flow.showStatus": false,
     "code-runner.runInTerminal": true,
     "vim.easymotion": true,
     "vim.normalModeKeyBindingsNonRecursive":[
@@ -39,4 +43,6 @@
     "prettier.tabWidth": 4,
     "prettier.tslintIntegration": true,
     "prettier.useTabs": true,
+    "editor.insertSpaces": false,
+
 }
