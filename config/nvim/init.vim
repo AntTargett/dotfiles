@@ -13,6 +13,12 @@ Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surro
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+"Intellisense Like Vscod
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
+"Linter and Formater
+ Plug 'w0rp/ale'
+
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
@@ -33,6 +39,15 @@ Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()
+
+"Ale Config
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
+
 
 " following 3 lines make the mapleader key work better
 set notimeout
