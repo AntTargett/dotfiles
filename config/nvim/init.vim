@@ -2,7 +2,7 @@
 " .vimrc / init.vim
 
 call plug#begin('~/.config/nvim/plugged')
-let mapleader = ","
+let mapleader = " "
 
 " color/theme stuff
 Plug 'tomasiser/vim-code-dark'
