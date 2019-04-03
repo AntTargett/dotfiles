@@ -2,7 +2,7 @@
 " .vimrc / init.vim
 
 call plug#begin('~/.config/nvim/plugged')
-let mapleader = ","
+let mapleader = " "
 
 " color/theme stuff
 Plug 'tomasiser/vim-code-dark'
@@ -13,17 +13,23 @@ Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surro
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+"Intellisense Like Vscod
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
+"Linter and Formater
+ Plug 'w0rp/ale'
+
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
-
+Plug 'leafgarland/typescript-vim', {'for':['.tsx']}
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
+Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx']] } " JSX support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -39,6 +45,15 @@ Plug 'tpope/vim-sleuth'
 
 " Initialize plugin system
 call plug#end()
+
+"Ale Config
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
+
 
 " following 3 lines make the mapleader key work better
 set notimeout
