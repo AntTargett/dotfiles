@@ -25,11 +25,11 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with d
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
-
+Plug 'leafgarland/typescript-vim', {'for':['.tsx']}
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] } " JSX support
+Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx']] } " JSX support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
 
