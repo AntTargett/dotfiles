@@ -30,6 +30,12 @@ Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascr
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
 Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
+" add end, endif, etc. automatically
+Plug 'tpope/vim-endwise'
+
+" detect indent style (tabs vs. spaces)
+Plug 'tpope/vim-sleuth'
 
 " Initialize plugin system
 call plug#end()
@@ -74,8 +80,8 @@ set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
     set ttymouse=xterm2 " lets mouse resize vim windows
 endif
-
-
+set linebreak " set soft wrapping
+set wrap " turn on line wrapping
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
