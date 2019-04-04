@@ -15,10 +15,10 @@ Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascrip
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
 "Intellisense Like Vscod
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
+Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 "Linter and Formater
  Plug 'w0rp/ale'
-
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
@@ -90,7 +90,7 @@ syntax enable
 colorscheme codedark
 
 
-" misc
+"misc
 set mouse+=a " lets mouse resize vim windows
 if !has('nvim')
     set ttymouse=xterm2 " lets mouse resize vim windows
@@ -160,6 +160,78 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+
+
+" Denite.nvim
+" ===========
+
+nnoremap <leader>l :Denite line -auto-preview<cr>
+nnoremap <leader>a :Denite grep -auto-preview<cr>
+nnoremap <leader>s :Denite outline<cr>
+nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
+nnoremap <D-S-p> :Denite command -default-action=execute<cr>
+" hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
+nnoremap <F6> :Denite command -default-action=execu
+" change default options
+call denite#custom#option('default', {
+            \ 'prompt': '>',
+            \ 'highlight_matched_char': 'DeniteHighlightChar',
+            \ 'highlight_matched_range': 'DeniteHighlightRange'
+            \ })
+
+" set file_rec to use ag
+call denite#custom#var('file_rec', 'command',
+            \ ['ag', '-l', '--nocolor', '-g', ''])
+
+" Change mappings.
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-j>',
+            \ '<denite:move_to_next_line>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-k>',
+            \ '<denite:move_to_previous_line>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-g>',
+            \ '<denite:quit>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-v>',
+            \ '<denite:do_action:vsplit>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-s>',
+            \ '<denite:do_action:split>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-p>',
+            \ '<denite:do_action:preview>',
+            \ 'noremap'
+            \)
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+            \ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+
+
 
 
 
@@ -271,3 +343,42 @@ let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.elm = '\.'
 
 
+ let g:startify_custom_header =[
+       \'                                             :mmo`   .+/.                                           ',
+       \'                                             +s-`   `yyo.                                           ',
+       \'                                             .`     .```                                            ',
+       \'                                              .`    .                                               ',
+       \'                                      .::.    `.    -                                               ',
+       \'                                     `syyo`    `-   -`                                              ',
+       \'                            `.`      `-//.      .-  -`   ``                                         ',
+       \'                           .sys-                 ./:osyhhhhhyo/-`                                   ',
+       \'                           `/o+.              `:sdmmNNNNNdo+osydho.                                 ',
+       \'                            ```             `:hmNNNNNNNNm-   -/./hd+`                               ',
+       \'                      ```                   /mNNNNNNNNNNNy.  :o` .yms`                              ',
+       \'                     .:::`                 `mNNNNNNNNNNNNNds:.```.yNms`                             ',
+       \'                     `--.                  .mNNNNNNNNNNNNNNNmddhhdmNNm:                             ',
+       \'                                           `omNNNNNNNNNNNNNNNNNNNNNNNNo                             ',
+       \'                                            `/hmNNNNNNNNNNNNNNNNNNNmdy.                             ',
+       \'                   `--`                       `:ohdmNNNNNNNNNNmmdyo:.`      ``                      ',
+       \'                   -oo`                          `.-/shNNNyo+od-.`         -soo/-`                  ',
+       \'                   ```                            .ohdmNNNdo..m.         `:s-`:sy/                  ',
+       \'                                                 :dhohNNNNNNd-d+        `++`   ```                  ',
+       \'                    `                            yNhdmNNNNNNNhho       .o-`                         ',
+       \'                   -y-                   ..`     yNmNNNNNNNNNh+-`    `/+`                           ',
+       \'                   `-`                  -dyso/-``sNNNNNNNNNms:oss+-`-o:`                            ',
+       \'                                     ```hy.-/oyysdNNNNNNNNmo`  `.:+oo.                              ',
+       \'                     ``        `.-/+syhhNdhhyyo+oNNNNNNNNNhoooooo-                                  ',
+       \'                     .:`   `.:oydmNNNNNNNNNNNNNNmNNNNNds//::::::m/                                  ',
+       \'                        `.:sdmNNNNNNNNNNNNNNNNNNNNNdhmo        `N-                                  ',
+       \'                      `-ohmNNNNNNNNNNNNNNNNNNNNNNNNo ho        -m`                                  ',
+       \'                    `:ymNNNNNNNNNNNNNNNNNNNNNNNNNNm-`d/        :h`                                  ',
+       \'                  `-ymNNNNNNNNNNNNNNNNNNNNNNNNNNmh- `m-        /s                                   ',
+       \'                  :dNNNNNNNNNNNNNNNNNNNNNNNNNmds:`  .m`        o/                                   ',
+       \'                  yNNNNNNNNNNNNNNNNNNNNNmmmmy:.     .h         s-                                   ',
+       \'                  .sdmmmmNNNNNmmmmmddhso+yy:`       :s         y`                                   ',
+       \'                    `.::/++++//os--.` `/o:`         /+         y                                    ',
+       \'                              `h-`  `-o:`           +:         y``.-:-                              ',
+       \'                               /s.`-+:`             o-  ````   ://++/-                              ',
+      \'                               :+:+:`               /+:/oso`                                        ',
+      \'                                ``                  `....`                    ',
+      \]
