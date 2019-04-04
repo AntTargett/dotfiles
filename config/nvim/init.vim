@@ -13,6 +13,14 @@ Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surro
 Plug 'tpope/vim-repeat' " adds support for the '.' command for vim-surround, vim-commentary and vim-unimpaired
 Plug 'thinca/vim-textobj-function-javascript' " Adds 'if' and 'af' for javascript
 Plug 'sickill/vim-pasta' " Context aware pasting (e.g. current indentation)
+
+"Airline bar at bottom
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Adds file icons
+Plug 'ryanoasis/vim-devicons'
+
 "Intellisense Like Vscod
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
@@ -29,9 +37,12 @@ Plug 'leafgarland/typescript-vim', {'for':['.tsx']}
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx']] } " JSX support
+Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx'] } " JSX support
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
+
+Plug 'google/vim-searchindex' " shows number of matches for search commands
+
 
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css', 'javascript', 'javascript.jsx'] } " CSS3 syntax support
 
@@ -39,6 +50,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
 " add end, endif, etc. automatically
 Plug 'tpope/vim-endwise'
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number management
 
 " detect indent style (tabs vs. spaces)
 Plug 'tpope/vim-sleuth'
@@ -121,7 +133,11 @@ set tabstop=8                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
+set hidden
 
+
+" remap esc
+inoremap jk <esc>
 
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
@@ -160,7 +176,45 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" toggle relative/absolute line numbers
+nnoremap <silent> <leader>. :call NumberToggle()<cr>
 
+" Functions {{{
+
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+        set norelativenumber
+    else
+        set relativenumber
+        set number
+    endif
+endfunc
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+
+"Coc config
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 
 " Denite.nvim
@@ -173,6 +227,13 @@ nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
 nnoremap <D-S-p> :Denite command -default-action=execute<cr>
 " hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
 nnoremap <F6> :Denite command -default-action=execu
+
+
+" highlight groups for matches
+hi DeniteHighlightChar ctermfg=4 guifg=Cyan
+hi DeniteHighlightRange ctermfg=12 ctermbg=8
+
+
 " change default options
 call denite#custom#option('default', {
             \ 'prompt': '>',
@@ -287,7 +348,9 @@ hi NERDTreeGitStatusUntracked ctermfg=2 guifg=#98c379
 hi link NERDTreeExecFile Normal
 
 
-
+" vim-airline 
+set laststatus=2 " plugin won't work without this line
+let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
 
 " vim-go
 " ------
