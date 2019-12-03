@@ -224,6 +224,8 @@ nnoremap <leader>l :Denite line -auto-preview<cr>
 nnoremap <leader>a :Denite grep -auto-preview<cr>
 nnoremap <leader>s :Denite outline<cr>
 nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
+
+nnoremap <leader>j :Denite file/rec <cr>
 nnoremap <D-S-p> :Denite command -default-action=execute<cr>
 " hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
 nnoremap <F6> :Denite command -default-action=execu
