@@ -33,7 +33,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with d
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' } " better syntax highlighting and indenting for haskell
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' } " haskell autocompletion integration with deoplete
 Plug 'elmcast/elm-vim', { 'for': 'elm' } " elm support
-Plug 'leafgarland/typescript-vim', {'for':['.tsx']}
+Plug 'leafgarland/typescript-vim', {'for':['.tsx','.ts']}
 Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
