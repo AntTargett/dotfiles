@@ -217,6 +217,9 @@ function! s:check_back_space() abort
 endfunction
 
 
+" blackhole register shortcut
+nnoremap \ "_
+
 " Denite.nvim
 " ===========
 
