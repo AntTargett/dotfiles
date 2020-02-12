@@ -170,6 +170,7 @@ nnoremap <leader>a :Ag<space>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
@@ -273,6 +274,12 @@ call denite#custom#map(
             \ 'insert',
             \ '<C-v>',
             \ '<denite:do_action:vsplit>',
+            \ 'noremap'
+            \)
+call denite#custom#map(
+            \ 'insert',
+            \ '<C-n>',
+            \ '<denite:do_action:tabopen>',
             \ 'noremap'
             \)
 call denite#custom#map(
