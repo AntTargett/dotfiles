@@ -40,6 +40,20 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Android/react-native setup 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Go
+export GOPATH=/Users/atargett/go
+export PATH=$PATH:$GOPATH/bin
+
+# ALIAS 's 
+alias vim='nvim'
+
 # added by Miniconda3 installer
 export PATH="/Users/atargett/miniconda3/bin:$PATH"
 
