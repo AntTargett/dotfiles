@@ -51,9 +51,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export GOPATH=/Users/atargett/go
 export PATH=$PATH:$GOPATH/bin
 
-# ALIAS 's 
-alias vim='nvim'
-
 # added by Miniconda3 installer
 export PATH="/Users/atargett/miniconda3/bin:$PATH"
 
