@@ -6,27 +6,27 @@ alias vim='nvim'
 
 #Docker
 alias dc='docker-compose'    # invoke docker-compose, which takes too long to type.
-alias d = "docker"
+alias d="docker"
 
 # Git Aliases
-alias gl = "git pull"
-alias gp = "git push"
-alias gs = "git status"
-alias ga = "git add"
-alias gaa = "git add --all"
+alias gl="git pull"
+alias gp="git push"
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add --all"
 alias gac="git add . && git commit -a -m "
-alias gcl = "git clone" 
+alias gcl="git clone" 
 
 
 #NPM Aliases 
 alias nis="npm install --save "
-alias nisd = "npm install --save-dev"
-alias nu = "npm uninstall"
+alias nisd="npm install --save-dev"
+alias nu="npm uninstall"
 
 # MISC
-alias unzip = "tar -xf" #Always forget unzipping -.-
-alias md "mkdir -p"
-alias s ="sudo"
+alias unzip="tar -xf" #Always forget unzipping -.-
+alias md="mkdir -p"
+alias s="sudo"
 
 
 # tmux aliases - credit nwaywood :P 
