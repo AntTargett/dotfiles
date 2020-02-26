@@ -21,7 +21,7 @@ alias gcl = "git clone"
 #NPM Aliases 
 alias nis="npm install --save "
 alias nisd = "npm install --save-dev"
-alias nu ="npm uninstall"
+alias nu = "npm uninstall"
 
 # MISC
 alias unzip = "tar -xf" #Always forget unzipping -.-
