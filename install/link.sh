@@ -5,9 +5,7 @@ DOTFILES=$HOME/.dotfiles
 echo -e "\nCreating symlinks"
 echo "=============================="
 
-echo "Linking nvim"
-
-ln -s ~/dotfiles/config/nvim ~/.config/nvim 
+# Add nvim file
 
 echo "Removing existing zsh file"
 
