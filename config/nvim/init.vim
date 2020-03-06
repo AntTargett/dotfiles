@@ -1,5 +1,4 @@
-"Credit to nwaywood for a lot of these settings
-" .vimrc / init.vim
+"NVIM Settings - Antony Targett"
 
 call plug#begin('~/.config/nvim/plugged')
 let mapleader = " "
@@ -25,8 +24,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tpope/vim-commentary' " Adds the operators 'gc' and '[count]gcc' to comment code
 "Linter and Formater
- Plug 'w0rp/ale'
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
+Plug 'w0rp/ale'
+Plug 'Shougo/denite.nvim', { 'tag': '3.1', 'do': ':UpdateRemotePlugins' } " Atom-narrow for vim
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion integration with deoplete
@@ -38,6 +37,7 @@ Plug 'reasonml-editor/vim-reason', { 'for': 'reason' } " reason support
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx'] } " JSX support
+Plug 'ianks/vim-tsx'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -57,15 +57,21 @@ Plug 'tpope/vim-sleuth'
 
 " Initialize plugin system
 call plug#end()
-
+"  linters
+let g:ale_linters = {
+\  'javascript': ['eslint'],
+\  'typescript': ['tslint'],
+\}
 "Ale Config
 let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
+\ 'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
+\ }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
-
+" coc extensions
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
 " following 3 lines make the mapleader key work better
 set notimeout
@@ -224,8 +230,14 @@ nnoremap \ "_
 " Denite.nvim
 " ===========
 
-nnoremap <leader>l :Denite line -auto-preview<cr>
-nnoremap <leader>a :Denite grep -auto-preview<cr>
+" highlight groups for matches
+hi DeniteHighlightChar ctermfg=4 guifg=Cyan
+hi DeniteHighlightRange ctermfg=12 ctermbg=8
+
+
+
+nnoremap <leader>l :Denite line <cr>
+nnoremap <leader>a :Denite grep <cr>
 nnoremap <leader>s :Denite outline<cr>
 nnoremap <leader>p :Denite menu:projects -default-action=cd<cr>
 
@@ -233,11 +245,6 @@ nnoremap <leader>j :Denite file/rec <cr>
 nnoremap <D-S-p> :Denite command -default-action=execute<cr>
 " hack fix for terminal vim https://stackoverflow.com/questions/33060569/mapping-command-s-to-w-in-vim
 nnoremap <F6> :Denite command -default-action=execu
-
-
-" highlight groups for matches
-hi DeniteHighlightChar ctermfg=4 guifg=Cyan
-hi DeniteHighlightRange ctermfg=12 ctermbg=8
 
 
 " change default options
@@ -294,6 +301,7 @@ call denite#custom#map(
             \ '<denite:do_action:preview>',
             \ 'noremap'
             \)
+
 " Ag command on grep source
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
@@ -302,11 +310,6 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
-
-
-
-
-
 
 " NERDTree
 " --------
@@ -363,6 +366,7 @@ hi link NERDTreeExecFile Normal
 " vim-airline 
 set laststatus=2 " plugin won't work without this line
 let g:airline_powerline_fonts=1 " enable vim-devicons icons in airline
+" let g:airline_theme = 'codedark'
 
 " vim-go
 " ------

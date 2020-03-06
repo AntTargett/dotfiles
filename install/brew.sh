@@ -14,7 +14,7 @@ brew install zsh
 brew install tree
 brew install jq
 brew install fzf
-
+brew install yarn
 
 # Languages 
 echo "Installing language support"
