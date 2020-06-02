@@ -28,6 +28,9 @@ alias unzip="tar -xf" #Always forget unzipping -.-
 alias md="mkdir -p"
 alias s="sudo"
 
+# Ssh alias
+alias sshWetrade="ssh -i ~/.ssh/iris_ssh_key root@wetrade-res-dlt-interop.sl.cloud9.ibm.com"
+alias sshTradles="ssh -i ~/.ssh/iris_ssh_key root@tradelens.sl.cloud9.ibm.com" 
 
 # tmux aliases - credit nwaywood :P 
 alias ta='tmux attach'

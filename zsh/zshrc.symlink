@@ -32,9 +32,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="/usr/local/bin:$PATH"
 
+
+
+
+#JAVA
+# export JAVA_HOME="`/usr/libexec/java_home`"
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+
 # Go
 
-export GOPATH=/Users/atargett/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=/Users/antonytargett/go
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOBIN=$HOME/go/bin
 
+# Aseprite 
+export PATH="${PWD}/depot_tools:${PATH}"
 
+# Protoc 
+export PROTOC=/usr/local/bin/protoc
+export PROTOC_INCLUDE=/usr/local/include
