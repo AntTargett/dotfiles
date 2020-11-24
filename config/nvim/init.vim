@@ -40,6 +40,8 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript', 'typescipt.tsx'] }
 Plug 'ianks/vim-tsx'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'styled-components/vim-styled-components', { 'for': ['javascript', 'javascript.jsx'] }
+" Dockerfile support"
+Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'google/vim-searchindex' " shows number of matches for search commands
 
@@ -54,13 +56,16 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle' " relative/absolute line number managem
 
 " detect indent style (tabs vs. spaces)
 Plug 'tpope/vim-sleuth'
+" Make commenting code easier"
+Plug 'preservim/nerdcommenter'
+
 
 " Initialize plugin system
 call plug#end()
 "  linters
 let g:ale_linters = {
 \  'javascript': ['eslint'],
-\  'typescript': ['tslint'],
+\  'typescript': ['eslint'],
 \}
 "Ale Config
 let g:ale_fixers = {
@@ -71,8 +76,8 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 " coc extensions
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
-
+let g:coc_global_extensions = ['coc-eslint', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+ 
 " following 3 lines make the mapleader key work better
 set notimeout
 set ttimeout

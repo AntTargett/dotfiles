@@ -1,6 +1,9 @@
 {
   "prettier.tslintIntegration": true,
   "prettier.eslintIntegration": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "typescript", "typescriptreact"]
-
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "ts"],
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "typescript", "typescriptreact"],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true
 }
