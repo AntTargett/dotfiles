@@ -15,6 +15,15 @@ brew install tree
 brew install jq
 brew install fzf
 brew install yarn
+brew install maven
+brew install nvm
+
+echo "Installing Java Support"
+brew install jenv
+brew install java
+brew tap AdoptOpenJDK/openjdk
+brew install --cask adoptopenjdk12
+brew install --cask adoptopenjdk8
 
 # Languages 
 echo "Installing language support"
@@ -27,9 +36,10 @@ brew install python
 brew install neovim
 
 echo "Installing applications"
-brew cask install iterm2
-brew cask install visual-studio-code
-
+brew install iterm2 --cask
+brew install visual-studio-code --cask
+brew install --cask postman
+brew install --cask spotify
 
 # zsh setup
 if ! command -v zsh; then
@@ -43,7 +53,4 @@ fi
 echo "installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-
-# NVM 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 
