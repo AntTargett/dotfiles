@@ -10,6 +10,7 @@ echo "Installing homebrew packages..."
 
 
 brew install git
+brew install git-lfs
 brew install zsh
 brew install tree
 brew install jq
@@ -40,6 +41,7 @@ brew install iterm2 --cask
 brew install visual-studio-code --cask
 brew install --cask postman
 brew install --cask spotify
+brew install --cask rectangle
 
 # zsh setup
 if ! command -v zsh; then
